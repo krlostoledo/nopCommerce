@@ -170,7 +170,7 @@ namespace Nop.Services.Messages
             {
                 var query = _messageTemplateRepository.Table;
                 query = query.Where(t => t.Name == messageTemplateName);
-                query = query.OrderBy(t => t.Id);
+                query = query.OrderByDescending(t => t.IsActive).ThenByDescending(t => t.Id);
                 var templates = query.ToList();
 
                 //store mapping
